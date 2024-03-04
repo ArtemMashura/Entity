@@ -8,12 +8,16 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Entity.Models;
 
-[Keyless]
-public partial class user
+public partial class note
 {
-    public int? id { get; set; }
+    [Key]
+    public int id { get; set; }
 
     [StringLength(200)]
     [Unicode(false)]
-    public string name { get; set; }
+    public string title { get; set; }
+
+    [StringLength(1000)]
+    [Unicode(false)]
+    public string content { get; set; }
 }

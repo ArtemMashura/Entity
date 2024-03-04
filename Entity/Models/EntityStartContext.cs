@@ -13,17 +13,15 @@ public partial class EntityStartContext : DbContext
     {
     }
 
+    public virtual DbSet<note> notes { get; set; }
+
     public virtual DbSet<user> users { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<user>(entity =>
+        modelBuilder.Entity<note>(entity =>
         {
-            entity.HasNoKey();
-
-            entity.Property(e => e.name)
-                .HasMaxLength(200)
-                .IsUnicode(false);
+            entity.HasKey(e => e.id).HasName("PK__notes__3213E83FF96BB82B");
         });
 
         OnModelCreatingPartial(modelBuilder);
